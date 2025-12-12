@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'category',
+    'accounts',
+    'store',
 ]
 
 MIDDLEWARE = [
@@ -62,12 +64,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'category.context_processors.menu_links', # cqtegory is the name of app and menu_links is the name of function
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'greatkart.wsgi.application'
+
+# register your models here. for custom user model
+# here accounts is the name of app and Account is the name of model
+AUTH_USER_MODEL = 'accounts.Account'
+
 
 
 # Database
@@ -122,5 +130,10 @@ STATIC_URL = 'static/'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS = [
-    'greatkart/static',
+    'greatkart/static', #greetkart is the name of project folder
 ]
+
+
+# media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR /'media'
