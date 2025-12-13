@@ -11,6 +11,7 @@ class Category(models.Model):
         verbose_name = 'category'
         verbose_name_plural = 'categories'
     
+    # method to get url of category
     def get_url(self):
         return reverse('products_by_category', args=[self.slug]) #this product_by_category is coming from store/urls.py
     

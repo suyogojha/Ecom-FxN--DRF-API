@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'category',
     'accounts',
     'store',
+    'carts',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'category.context_processors.menu_links', # cqtegory is the name of app and menu_links is the name of function
+                'category.context_processors.menu_links', # cqtegory is the name of app and `menu_links is the name of function
+                'carts.context_processors.counter', # to show number of items in cart in navbar
             ],
         },
     },

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 # Create your models here.
 
+# to create super user and normal user
 class MyAccountManager(BaseUserManager):
     # this code is for creating normal user
     def create_user(self, first_name, last_name, username, email, password=None):
@@ -15,11 +16,11 @@ class MyAccountManager(BaseUserManager):
             username=username,
             first_name=first_name,
             last_name=last_name,
-        )
+        ) # self.model is used to create model object
         
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+        user.set_password(password) # to set password
+        user.save(using=self._db) # to save user in database
+        return user 
     
     # this code is for creating super user
     def create_superuser(self, first_name, last_name, username, email, password):
@@ -29,7 +30,7 @@ class MyAccountManager(BaseUserManager):
             password=password,
             first_name=first_name,
             last_name=last_name,
-        )
+        ) # reusing create_user method
         user.is_admin = True
         user.is_active = True
         user.is_staff = True
