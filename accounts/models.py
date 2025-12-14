@@ -38,12 +38,6 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
-
-
-
-
-
 # to create normal user 
 class Account(AbstractUser):
     first_name = models.CharField(max_length=50)
