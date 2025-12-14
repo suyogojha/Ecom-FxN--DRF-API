@@ -4,7 +4,7 @@ from carts.models import Cart, CartItem
 
 # Register your models here.
 class CartAdmin(admin.ModelAdmin):
-    list_display =  ('card_id', 'date_added')
+    list_display =  ('cart_id', 'date_added')
 
 
 class CartItemAdmin(admin.ModelAdmin):

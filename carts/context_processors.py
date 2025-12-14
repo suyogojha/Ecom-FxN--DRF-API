@@ -8,8 +8,11 @@ def counter(request):
         return {}
     else:
         try:
-            cart = Cart.objects.filter(card_id=_cart_id(request)) # get the cart using the cart_id present in the session
-            cart_items = CartItem.objects.all().filter(cart=cart[:1]) # get the cart items associated with the cart
+            cart = Cart.objects.filter(cart_id=_cart_id(request)) # get the cart using the cart_id present in the session
+            if request.user.is_authenticated:
+                cart_items = CartItem.objects.all().filter(user=request.user)
+            else:
+                cart_items = CartItem.objects.all().filter(cart=cart[:1]) # get the cart items associated with the cart
             for cart_item in cart_items:
                 cart_count += cart_item.quantity # count the total quantity of items in the cart
         except Cart.DoesNotExist:

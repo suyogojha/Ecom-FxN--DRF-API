@@ -37,7 +37,7 @@ def store(request, category_slug=None):
 def product_detail(request, category_slug, product_slug):
     try: 
         single_product = Product.objects.get(category__slug=category_slug, slug=product_slug) # get the product using category slug and product slug
-        in_cart = CartItem.objects.filter(cart__card_id=_cart_id(request), product=single_product).exists() # check if the product is already in the cart
+        in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request), product=single_product).exists() # check if the product is already in the cart
     except Exception as e: # catch any exception
         raise e
     
