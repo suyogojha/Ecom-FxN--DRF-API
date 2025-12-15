@@ -1,7 +1,8 @@
-
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
+
 
 
 <!-- ========================= SECTION MAIN ========================= -->
@@ -25,18 +26,27 @@
 	<h3 class="section-title">Popular products</h3>
 </header><!-- sect-heading -->
 
-	
+
 <div class="row">
 	{% for product in products %}
-		<div class="col-md-3">
-			<div class="card card-product-grid">
-				<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
-				<figcaption class="info-wrap">
-					<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-					<div class="price mt-1">£{{ product.price }}</div> <!-- price-wrap.// -->
-				</figcaption>
-			</div>
-		</div> <!-- col.// -->
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+				<div class="price mt-1">$ {{ product.price }}</div> <!-- price-wrap.// -->
+				<div class="rating-star">
+					<span>
+						<i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+						<i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+						</span>
+				</div>
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
 	{% endfor %}
 </div> <!-- row.// -->
 
@@ -48,7 +58,8 @@
 
 
 
+
 </body>
 </html>
 
-{% endblock content %}
+{% endblock %}
